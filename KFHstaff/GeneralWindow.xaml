@@ -1,0 +1,42 @@
+﻿<Window x:Class="KFHstaff.GeneralWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KFHstaff"
+        mc:Ignorable="d"
+        Title="Главная страница" Height="600" Width="800"
+        WindowStartupLocation="CenterScreen">
+    <Grid Background="#F5F5F5">
+        <!-- Заголовок -->
+        <TextBlock Text="KFHstaff"
+                   FontSize="28" FontWeight="Bold"
+                   HorizontalAlignment="Left" VerticalAlignment="Top"
+                   Margin="20,23,0,0"/>
+
+        <!-- Основной контент -->
+        <Border Background="White" CornerRadius="10"
+                Margin="20,80,20,20">
+            <StackPanel Margin="20">
+                <TextBlock Text="Это ваша главная страница."
+                           FontSize="18" Margin="0,0,0,20"/>
+                <Button Content="Выход"
+                        Width="150" Height="40" Background="#FF4444" Foreground="White"
+                        FontSize="16" Click="BtnLogout_Click" RenderTransformOrigin="0.844,0.565">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border CornerRadius="20" Background="{TemplateBinding Background}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#CC0000"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
