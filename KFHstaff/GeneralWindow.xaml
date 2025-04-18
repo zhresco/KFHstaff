@@ -20,23 +20,31 @@
             <StackPanel Margin="20">
                 <TextBlock Text="Это ваша главная страница."
                            FontSize="18" Margin="0,0,0,20"/>
-                <Button Content="Выход"
-                        Width="150" Height="40" Background="#FF4444" Foreground="White"
-                        FontSize="16" Click="BtnLogout_Click" RenderTransformOrigin="0.844,0.565">
-                    <Button.Template>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border CornerRadius="20" Background="{TemplateBinding Background}">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Border>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#CC0000"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
             </StackPanel>
         </Border>
+        <Button Content="Выход"
+                        Background="#FF4444" Foreground="White"
+                        FontSize="16" Click="BtnLogout_Click" RenderTransformOrigin="0.547,0.525" Margin="318,106,344,439">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="-0.331"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-0.814"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border CornerRadius="20" Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#CC0000"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </Grid>
 </Window>

@@ -1,23 +1,13 @@
-﻿using System.Text;
+﻿using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Configuration;
 
 namespace KFHstaff
 {
     public partial class Authorization : Window
     {
-        private Dictionary<string, string> users = new Dictionary<string, string>
-        {
-            { "admin", "admin" },
-            { "user", "user" }
-        };
+        private string connectionString = ConfigurationManager.ConnectionStrings["KFHstaffDBConnection"].ConnectionString;
 
         public Authorization()
         {
@@ -26,26 +16,42 @@ namespace KFHstaff
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            string login = txtLogin.Text.ToLower(); 
-            string password = txtPassword.Password;
+            string login = txtLogin.Text?.ToLower() ?? string.Empty;
+            string password = txtPassword.Password ?? string.Empty;
 
-            // Проверка введенных данных
             if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
             {
-                lblError.Text = "Введите логин и пароль";
+                lblError.Text = "Введите логин и пароль!";
                 lblError.Visibility = Visibility.Visible;
                 return;
             }
 
-            // Проверка учетных данных
-            if (users.TryGetValue(login, out string correctPassword) && password == correctPassword)
+            string fullName = null;
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                
-                MessageBox.Show("Авторизация успешна", "Добро пожаловать", MessageBoxButton.OK, MessageBoxImage.Information);
+                try
+                {
+                    connection.Open();
+                    string query = "SELECT Фамилия + ' ' + Имя FROM dbo.Staff WHERE Login = @Login AND Password = @Password";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Login", login);
+                        command.Parameters.AddWithValue("@Password", password);
+                        fullName = command.ExecuteScalar()?.ToString();
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show($"Ошибка подключения к базе данных: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+            }
 
-                
-                GeneralWindow dashboard = new GeneralWindow();
-                dashboard.Show();
+            if (!string.IsNullOrEmpty(fullName))
+            {
+                MessageBox.Show("Авторизация успешна!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                GeneralWindow generalWindow = new GeneralWindow(fullName);
+                generalWindow.Show();
                 this.Close();
             }
             else

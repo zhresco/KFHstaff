@@ -14,19 +14,22 @@ using System.Windows.Shapes;
 
 namespace KFHstaff
 {
-    /// <summary>
-    /// Логика взаимодействия для GeneralWindow.xaml
-    /// </summary>
     public partial class GeneralWindow : Window
     {
-        public GeneralWindow()
+        private string employeeName;
+
+        public GeneralWindow(string employeeName)
         {
             InitializeComponent();
+            this.employeeName = employeeName;
+            this.Title = $"Добро пожаловать, {employeeName}!";
         }
 
         private void BtnLogout_Click(object sender, RoutedEventArgs e)
         {
-
+            Authorization authWindow = new Authorization();
+            authWindow.Show();
+            this.Close();
         }
     }
 }
