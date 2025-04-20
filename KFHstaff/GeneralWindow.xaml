@@ -22,25 +22,29 @@
                            FontSize="18" Margin="0,0,0,20"/>
             </StackPanel>
         </Border>
-        <Button Content="Выход"
-                        Background="#FF4444" Foreground="White"
-                        FontSize="16" Click="BtnLogout_Click" RenderTransformOrigin="0.547,0.525" Margin="318,106,344,439">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform AngleY="-0.331"/>
-                    <RotateTransform/>
-                    <TranslateTransform Y="-0.814"/>
-                </TransformGroup>
-            </Button.RenderTransform>
+        <!-- Кнопка "Выход" -->
+        <Button x:Name="BtnLogout"
+        Content="Выход"
+        Width="100" Height="40"
+        MinWidth="100" MinHeight="40"
+        Background="#FF4444" Foreground="White"
+        FontSize="16" 
+        HorizontalAlignment="Right" VerticalAlignment="Top"
+        Margin="0,20,20,0"
+        Click="BtnLogout_Click">
             <Button.Template>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Border CornerRadius="20" Background="{TemplateBinding Background}">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="ButtonBorder"
+                    CornerRadius="20"
+                    Background="{TemplateBinding Background}"
+                    Width="{TemplateBinding Width}"
+                    Height="{TemplateBinding Height}">
+                        <ContentPresenter HorizontalAlignment="Center" 
+                                 VerticalAlignment="Center"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#CC0000"/>
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="#CC0000"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
