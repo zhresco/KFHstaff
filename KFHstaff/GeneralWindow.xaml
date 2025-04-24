@@ -7,40 +7,35 @@
         mc:Ignorable="d"
         Title="Главная страница" Height="600" Width="800"
         WindowStartupLocation="CenterScreen">
+    <!-- Ресурсы окна -->
+    <Window.Resources>
+        <local:RoleToVisibilityConverter x:Key="RoleToVisibilityConverter"/>
+    </Window.Resources>
     <Grid Background="#F5F5F5">
         <!-- Заголовок -->
         <TextBlock Text="KFHstaff"
                    FontSize="28" FontWeight="Bold"
                    HorizontalAlignment="Left" VerticalAlignment="Top"
                    Margin="20,23,0,0"/>
-
-        <!-- Основной контент -->
-        <Border Background="White" CornerRadius="10"
-                Margin="20,80,20,20">
-            <StackPanel Margin="20">
-                <TextBlock Text="Это ваша главная страница."
-                           FontSize="18" Margin="0,0,0,20"/>
-            </StackPanel>
-        </Border>
-        <!-- Кнопка "Выход" -->
+        <!-- Кнопка выхода -->
         <Button x:Name="BtnLogout"
-        Content="Выход"
-        Width="100" Height="40"
-        MinWidth="100" MinHeight="40"
-        Background="#FF4444" Foreground="White"
-        FontSize="16" 
-        HorizontalAlignment="Right" VerticalAlignment="Top"
-        Margin="0,20,20,0"
-        Click="BtnLogout_Click">
+                Content="Выход"
+                Width="100" Height="40"
+                MinWidth="100" MinHeight="40"
+                Background="#FF4444" Foreground="White"
+                FontSize="16" 
+                HorizontalAlignment="Right" VerticalAlignment="Top"
+                Margin="0,20,20,0"
+                Click="BtnLogout_Click">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="ButtonBorder"
-                    CornerRadius="20"
-                    Background="{TemplateBinding Background}"
-                    Width="{TemplateBinding Width}"
-                    Height="{TemplateBinding Height}">
+                            CornerRadius="20"
+                            Background="{TemplateBinding Background}"
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}">
                         <ContentPresenter HorizontalAlignment="Center" 
-                                 VerticalAlignment="Center"/>
+                                         VerticalAlignment="Center"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -50,5 +45,89 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
+        <!-- Основной контент -->
+        <Border Background="White" CornerRadius="10"
+                Margin="20,80,20,20">
+            <StackPanel Margin="20">
+                
+                <!-- Панель админа, видна только для роли Admin -->
+                <StackPanel x:Name="AdminPanel" 
+                            Orientation="Vertical"
+                            HorizontalAlignment="Center"
+                            Visibility="{Binding UserRole, Converter={StaticResource RoleToVisibilityConverter}, FallbackValue=Collapsed, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+                    <TextBlock Text="Панель администратора"
+                               FontSize="16" FontWeight="Bold"
+                               HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <!-- Кнопка управления сотрудниками -->
+                        <Button Content="Управление сотрудниками"
+                                Width="200" Height="40"
+                                Margin="10"
+                                Background="#4CAF50" Foreground="White"
+                                FontSize="16"
+                                Click="BtnManageEmployees_Click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border x:Name="ButtonBorder"
+                                            CornerRadius="10"
+                                            Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="ButtonBorder" Property="Background" Value="#45A049"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <!-- Кнопка отчётов -->
+                        <Button Content="Отчёты"
+                                Width="200" Height="40"
+                                Margin="10"
+                                Background="#2196F3" Foreground="White"
+                                FontSize="16"
+                                Click="BtnReports_Click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border x:Name="ButtonBorder"
+                                            CornerRadius="10"
+                                            Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="ButtonBorder" Property="Background" Value="#1E88E5"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <!-- Кнопка настроек -->
+                        <Button Content="Настройки"
+                                Width="200" Height="40"
+                                Margin="10"
+                                Background="#FF9800" Foreground="White"
+                                FontSize="16"
+                                Click="BtnSettings_Click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border x:Name="ButtonBorder"
+                                            CornerRadius="10"
+                                            Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="ButtonBorder" Property="Background" Value="#FB8C00"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>

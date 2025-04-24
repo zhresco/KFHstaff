@@ -1,0 +1,63 @@
+﻿<Window x:Class="KFHstaff.EmployeeManagementWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KFHstaff"
+        mc:Ignorable="d"
+        Title="Управление сотрудниками" Height="600" Width="800"
+        WindowStartupLocation="CenterScreen">
+    <Grid Background="#F5F5F5">
+        <TextBlock Text="Управление сотрудниками"
+                   FontSize="28" FontWeight="Bold"
+                   HorizontalAlignment="Left" VerticalAlignment="Top"
+                   Margin="20,20,0,0"/>
+
+        <!-- Кнопка "Назад" -->
+        <Button Content="Назад"
+                Width="100" Height="40"
+                Background="#FF4444" Foreground="White"
+                FontSize="16"
+                HorizontalAlignment="Right" VerticalAlignment="Top"
+                Margin="0,20,20,0"
+                Click="BtnBack_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="ButtonBorder"
+                            CornerRadius="20"
+                            Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="#CC0000"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <!-- Таблица сотрудников -->
+        <Border Background="White" CornerRadius="10"
+                Margin="20,80,20,20">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <DataGrid x:Name="EmployeesDataGrid"
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True"
+                          Margin="20">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding ID_Сотрудника}" Width="50"/>
+                        <DataGridTextColumn Header="Фамилия" Binding="{Binding Фамилия}" Width="100"/>
+                        <DataGridTextColumn Header="Имя" Binding="{Binding Имя}" Width="100"/>
+                        <DataGridTextColumn Header="Логин" Binding="{Binding Login}" Width="100"/>
+                        <DataGridTextColumn Header="Роль" Binding="{Binding Role}" Width="80"/>
+                        <DataGridTextColumn Header="Дата Рождения" Binding="{Binding Дата_Рождения, StringFormat={}{0:dd.MM.yyyy}}" Width="120"/>
+                        <DataGridTextColumn Header="Пол" Binding="{Binding Пол}" Width="50"/>
+                        <DataGridTextColumn Header="Телефон" Binding="{Binding Телефон}" Width="120"/>
+                        <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</Window>

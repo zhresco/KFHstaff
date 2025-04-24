@@ -9,6 +9,7 @@ namespace KFHstaff
     /// </summary>
     public partial class App : Application
     {
+
     }
 
 }
