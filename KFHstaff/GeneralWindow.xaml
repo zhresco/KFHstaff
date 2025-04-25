@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:KFHstaff"
         mc:Ignorable="d"
         Title="Главная страница" Height="600" Width="800"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" Icon="/ico.ico">
     <!-- Ресурсы окна -->
     <Window.Resources>
         <local:RoleToVisibilityConverter x:Key="RoleToVisibilityConverter"/>

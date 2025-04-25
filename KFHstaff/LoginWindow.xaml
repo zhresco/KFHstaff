@@ -7,17 +7,15 @@
         mc:Ignorable="d"
         Title="KFHstaff" Height="450" Width="523"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize" Icon="/groups_24dp_99E6E6_FILL0_wght400_GRAD0_opsz24.png">
+        ResizeMode="NoResize" Icon="/ico.ico">
     <Grid Background="#F5F5F5">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="41*"/>
-            <ColumnDefinition Width="18*"/>
-            <ColumnDefinition Width="465*"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <!-- основа -->
         <Border Background="White" CornerRadius="10" 
-                Width="350" Height="345"
-                VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="2" Margin="28,0,0,0">
+                Width="350" Height="346"
+                VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel Margin="20" VerticalAlignment="Center">
                 <!-- заголовок -->
                 <Label Content="Авторизация" 

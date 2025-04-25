@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-
+﻿using System.Windows;
 
 namespace KFHstaff
 {
@@ -27,13 +14,11 @@ namespace KFHstaff
             set => _userRole = value;
         }
 
-        // Конструктор по умолчанию
         public GeneralWindow()
         {
             InitializeComponent();
         }
 
-        // Конструктор с параметрами имени и роли
         public GeneralWindow(string fullName, string role)
         {
             InitializeComponent();
@@ -60,7 +45,9 @@ namespace KFHstaff
         // Обработчик кнопки отчётов
         private void BtnReports_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Окно отчётов пока не реализовано.", "Информация");
+            ReportsWindow reportsWindow = new ReportsWindow(this.Title.Split(',')[1].Trim().Split('(')[0].Trim(), _userRole);
+            reportsWindow.Show();
+            this.Close();
         }
 
         // Обработчик кнопки настроек
