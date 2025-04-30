@@ -1,6 +1,5 @@
 ﻿using System.Data.SqlClient;
 using System.Windows;
-using System.Windows.Controls;
 using System.Configuration;
 
 namespace KFHstaff
@@ -72,6 +71,18 @@ namespace KFHstaff
                 lblError.Text = "Неверный логин или пароль!";
                 lblError.Visibility = Visibility.Visible;
                 txtPassword.Password = "";
+            }
+        }
+
+        // Обработчик кнопки "Регистрация"
+        private void BtnRegister_Click(object sender, RoutedEventArgs e)
+        {
+            RegistrationWindow registrationWindow = new RegistrationWindow();
+            if (registrationWindow.ShowDialog() == true)
+            {
+                txtLogin.Text = "";
+                txtPassword.Password = "";
+                lblError.Visibility = Visibility.Collapsed;
             }
         }
     }

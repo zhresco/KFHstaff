@@ -4,8 +4,8 @@ namespace KFHstaff
 {
     public partial class GeneralWindow : Window
     {
-        // Поле для хранения роли пользователя
-        private string _userRole;
+        private string _userName; // Поле для хранения имени пользователя
+        private string _userRole; // Поле для хранения роли пользователя
 
         // Свойство для привязки роли в XAML
         public string UserRole
@@ -22,8 +22,10 @@ namespace KFHstaff
         public GeneralWindow(string fullName, string role)
         {
             InitializeComponent();
+            _userName = fullName;
             _userRole = role;
             this.Title = $"Добро пожаловать, {fullName}! ({role})";
+            DataContext = this; // Для привязки UserRole
         }
 
         // Обработчик кнопки выхода
@@ -37,7 +39,7 @@ namespace KFHstaff
         // Обработчик кнопки управления сотрудниками
         private void BtnManageEmployees_Click(object sender, RoutedEventArgs e)
         {
-            EmployeeManagementWindow empWindow = new EmployeeManagementWindow(this.Title.Split(',')[1].Trim().Split('(')[0].Trim(), _userRole);
+            EmployeeManagementWindow empWindow = new EmployeeManagementWindow(_userName, _userRole);
             empWindow.Show();
             this.Close();
         }
@@ -45,7 +47,7 @@ namespace KFHstaff
         // Обработчик кнопки отчётов
         private void BtnReports_Click(object sender, RoutedEventArgs e)
         {
-            ReportsWindow reportsWindow = new ReportsWindow(this.Title.Split(',')[1].Trim().Split('(')[0].Trim(), _userRole);
+            ReportsWindow reportsWindow = new ReportsWindow(_userName, _userRole);
             reportsWindow.Show();
             this.Close();
         }
@@ -54,6 +56,14 @@ namespace KFHstaff
         private void BtnSettings_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Окно настроек пока не реализовано.", "Информация");
+        }
+
+        // Обработчик кнопки "Мой профиль"
+        private void BtnProfile_Click(object sender, RoutedEventArgs e)
+        {
+            UserWindow userWindow = new UserWindow(_userName, _userRole);
+            userWindow.Show();
+            this.Close();
         }
     }
 }

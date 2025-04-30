@@ -39,31 +39,61 @@
                                 FontSize="14" Padding="5,0,5,0" VerticalContentAlignment="Center"/>
                 </Border>
 
-                <!-- кнопка входа -->
-                <Button x:Name="btnLogin" Content="Войти ↵" 
-                        Height="40" Background="#27ae60" Foreground="White"
-                        FontSize="16" FontWeight="Bold"
-                        Click="BtnLogin_Click">
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <Border x:Name="border" 
-                                    CornerRadius="20" 
-                                    Background="{TemplateBinding Background}"
-                                    BorderThickness="0">
-                                <ContentPresenter HorizontalAlignment="Center" 
-                                                  VerticalAlignment="Center"/>
-                            </Border>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="border" Property="Background" Value="#0066CC"/>
-                                </Trigger>
-                                <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="border" Property="Background" Value="#005299"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
+                <!-- Кнопки -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <!-- кнопка входа -->
+                    <Button x:Name="btnLogin" Content="Войти ↵" 
+                            Height="40" Width="120" Background="#27ae60" Foreground="White"
+                            FontSize="16" FontWeight="Bold"
+                            Margin="0,0,10,0"
+                            Click="BtnLogin_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="border" 
+                                        CornerRadius="20" 
+                                        Background="{TemplateBinding Background}"
+                                        BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center" 
+                                                      VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#0066CC"/>
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#005299"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <!-- кнопка регистрации -->
+                    <Button x:Name="btnRegister" Content="Регистрация" 
+                            Height="40" Width="120" Background="#2196F3" Foreground="White"
+                            FontSize="16" FontWeight="Bold"
+                            Click="BtnRegister_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="border" 
+                                        CornerRadius="20" 
+                                        Background="{TemplateBinding Background}"
+                                        BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center" 
+                                                      VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1E88E5"/>
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1976D2"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </StackPanel>
 
                 <!-- варнинг -->
                 <TextBlock x:Name="lblError" Foreground="Red" TextWrapping="Wrap" 
