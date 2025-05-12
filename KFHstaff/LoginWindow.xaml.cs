@@ -16,11 +16,11 @@ namespace KFHstaff
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            // Получение логина и пароля из полей ввода
+            // получение логина и пароля из полей 
             string login = txtLogin.Text?.ToLower() ?? string.Empty;
             string password = txtPassword.Password ?? string.Empty;
 
-            // Проверка на пустые поля
+            // проверка на пустоту
             if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
             {
                 lblError.Text = "Введите логин и пароль!";
@@ -30,7 +30,7 @@ namespace KFHstaff
 
             string fullName = null;
             string role = null;
-            // Подключение к базе данных и выполнение запроса
+            // подруб к базе данных и выполнение запроса
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
@@ -61,7 +61,6 @@ namespace KFHstaff
             // Если пользователь найден, открываем GeneralWindow
             if (!string.IsNullOrEmpty(fullName))
             {
-                MessageBox.Show("Авторизация успешна!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                 GeneralWindow generalWindow = new GeneralWindow(fullName, role);
                 generalWindow.Show();
                 this.Close();

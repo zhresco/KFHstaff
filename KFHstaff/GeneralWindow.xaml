@@ -163,6 +163,122 @@
                             </Button.Template>
                         </Button>
                     </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                        <Button Content="Оформить больничный"
+                                Width="200" Height="40"
+                                Margin="10"
+                                Background="#8E24AA" Foreground="White"
+                                FontSize="16"
+                                BorderThickness="0"
+                                Click="BtnSickLeave_Click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="ButtonBorder"
+                                            CornerRadius="10"
+                                            Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="ButtonBorder" Property="Background" Value="#6D1B7B"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button Content="Оформить отпуск"
+                                Width="200" Height="40"
+                                Margin="10"
+                                Background="#FBC02D" Foreground="Black"
+                                FontSize="16"
+                                BorderThickness="0"
+                                Click="BtnVacation_Click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="ButtonBorder"
+                                            CornerRadius="10"
+                                            Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="ButtonBorder" Property="Background" Value="#F9A825"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                        <Button Content="Принять на работу"
+                                Width="200" Height="40"
+                                Margin="10"
+                                Background="#388E3C" Foreground="White"
+                                FontSize="16"
+                                BorderThickness="0"
+                                Click="BtnHire_Click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="ButtonBorder"
+                                            CornerRadius="10"
+                                            Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="ButtonBorder" Property="Background" Value="#2E7031"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button Content="Уволить сотрудника"
+                                Width="200" Height="40"
+                                Margin="10"
+                                Background="#D32F2F" Foreground="White"
+                                FontSize="16"
+                                BorderThickness="0"
+                                Click="BtnDismiss_Click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="ButtonBorder"
+                                            CornerRadius="10"
+                                            Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="ButtonBorder" Property="Background" Value="#B71C1C"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                        <Button Content="История"
+                                Width="410" Height="40"
+                                Margin="10"
+                                Background="#607D8B" Foreground="White"
+                                FontSize="16"
+                                BorderThickness="0"
+                                Click="BtnHistory_Click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="ButtonBorder"
+                                            CornerRadius="10"
+                                            Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="ButtonBorder" Property="Background" Value="#455A64"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </StackPanel>
                 </StackPanel>
 
                 <!-- Панель пользователя, видна только для роли User -->
