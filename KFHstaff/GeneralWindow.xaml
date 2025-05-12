@@ -11,6 +11,7 @@
     <Window.Resources>
         <local:RoleToVisibilityConverter x:Key="RoleToVisibilityConverter"/>
         <local:UserRoleToVisibilityConverter x:Key="UserRoleToVisibilityConverter"/>
+        <local:HrRoleToVisibilityConverter x:Key="HrRoleToVisibilityConverter"/>
     </Window.Resources>
     <Grid Background="#F5F5F5">
         <!-- Заголовок -->
@@ -65,9 +66,10 @@
                                 Margin="10"
                                 Background="#4CAF50" Foreground="White"
                                 FontSize="16"
-                                Click="BtnManageEmployees_Click">
+                                Click="BtnManageEmployees_Click"
+                                Visibility="{Binding UserRole, Converter={StaticResource RoleToVisibilityConverter}, FallbackValue=Collapsed, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
                             <Button.Template>
-                                <ControlTemplate TargetType="{x:Type Button}">
+                                <ControlTemplate TargetType="Button">
                                     <Border x:Name="ButtonBorder"
                                             CornerRadius="10"
                                             Background="{TemplateBinding Background}">
@@ -87,9 +89,10 @@
                                 Margin="10"
                                 Background="#2196F3" Foreground="White"
                                 FontSize="16"
-                                Click="BtnReports_Click">
+                                Click="BtnReports_Click"
+                                Visibility="{Binding UserRole, Converter={StaticResource RoleToVisibilityConverter}, FallbackValue=Collapsed, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
                             <Button.Template>
-                                <ControlTemplate TargetType="{x:Type Button}">
+                                <ControlTemplate TargetType="Button">
                                     <Border x:Name="ButtonBorder"
                                             CornerRadius="10"
                                             Background="{TemplateBinding Background}">
@@ -103,15 +106,27 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-                        <!-- Кнопка настроек -->
-                        <Button Content="Настройки"
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Панель HR, видна только для роли HR -->
+                <StackPanel x:Name="HRPanel"
+                            Orientation="Vertical"
+                            HorizontalAlignment="Center"
+                            Visibility="{Binding UserRole, Converter={StaticResource HrRoleToVisibilityConverter}, FallbackValue=Collapsed, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+                    <TextBlock Text="Панель кадровика"
+                               FontSize="16" FontWeight="Bold"
+                               HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Content="Управление сотрудниками"
                                 Width="200" Height="40"
                                 Margin="10"
-                                Background="#FF9800" Foreground="White"
+                                Background="#4CAF50" Foreground="White"
                                 FontSize="16"
-                                Click="BtnSettings_Click">
+                                BorderThickness="0"
+                                Click="BtnManageEmployees_Click">
                             <Button.Template>
-                                <ControlTemplate TargetType="{x:Type Button}">
+                                <ControlTemplate TargetType="Button">
                                     <Border x:Name="ButtonBorder"
                                             CornerRadius="10"
                                             Background="{TemplateBinding Background}">
@@ -119,7 +134,29 @@
                                     </Border>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter TargetName="ButtonBorder" Property="Background" Value="#FB8C00"/>
+                                            <Setter TargetName="ButtonBorder" Property="Background" Value="#45A049"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button Content="Отчёты"
+                                Width="200" Height="40"
+                                Margin="10"
+                                Background="#2196F3" Foreground="White"
+                                FontSize="16"
+                                BorderThickness="0"
+                                Click="BtnReports_Click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="ButtonBorder"
+                                            CornerRadius="10"
+                                            Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="ButtonBorder" Property="Background" Value="#1E88E5"/>
                                         </Trigger>
                                     </ControlTemplate.Triggers>
                                 </ControlTemplate>

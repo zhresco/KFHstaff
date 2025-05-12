@@ -13,11 +13,22 @@ namespace KFHstaff
         private string connectionString = ConfigurationManager.ConnectionStrings["KFHstaffDBConnection"].ConnectionString;
         // Сотрудник, который редактируется (null для создания нового)
         private Employee _employee;
+        private string _currentUserRole;
 
-        public EmployeeEditWindow(Employee employee)
+        public EmployeeEditWindow(Employee employee, string currentUserRole = null)
         {
             InitializeComponent();
             _employee = employee;
+            _currentUserRole = currentUserRole;
+
+            // Ограничение выбора ролей для HR
+            if (!string.IsNullOrEmpty(currentUserRole) && currentUserRole == "HR")
+            {
+                // Удаляем возможность выбора Admin
+                var adminItem = CmbRole.Items.Cast<ComboBoxItem>().FirstOrDefault(item => item.Content.ToString() == "Admin");
+                if (adminItem != null)
+                    CmbRole.Items.Remove(adminItem);
+            }
 
             // Если сотрудник передан, заполняем поля для редактирования
             if (_employee != null)
@@ -37,7 +48,7 @@ namespace KFHstaff
             {
                 TitleTextBlock.Text = "Создание сотрудника";
                 CmbGender.SelectedIndex = 0; // По умолчанию "Мужской"
-                CmbRole.SelectedIndex = 1;   // По умолчанию "User"
+                CmbRole.SelectedIndex = 1;   // По умолчанию "User" или "HR"
             }
         }
 
@@ -56,6 +67,13 @@ namespace KFHstaff
                 CmbRole.SelectedItem == null)
             {
                 MessageBox.Show("Заполните все поля!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            // HR не может создавать/редактировать Admin
+            if (_currentUserRole == "HR" && (CmbRole.SelectedItem as ComboBoxItem).Content.ToString() == "Admin")
+            {
+                MessageBox.Show("Кадровик не может создавать или редактировать сотрудников с ролью Admin!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 

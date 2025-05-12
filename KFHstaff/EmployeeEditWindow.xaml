@@ -50,6 +50,7 @@
                     <Label Content="Роль:" FontSize="14"/>
                     <ComboBox x:Name="CmbRole" FontSize="14" Margin="0,0,0,20">
                         <ComboBoxItem Content="Admin"/>
+                        <ComboBoxItem Content="HR"/>
                         <ComboBoxItem Content="User"/>
                     </ComboBox>
                     <!-- Кнопки -->

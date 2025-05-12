@@ -86,7 +86,7 @@ namespace KFHstaff
         // Обработчик кнопки "Создать"
         private void BtnCreate_Click(object sender, RoutedEventArgs e)
         {
-            EmployeeEditWindow editWindow = new EmployeeEditWindow(null);
+            EmployeeEditWindow editWindow = new EmployeeEditWindow(null, _userRole);
             if (editWindow.ShowDialog() == true)
             {
                 LoadEmployees();
@@ -102,7 +102,7 @@ namespace KFHstaff
                 MessageBox.Show("Выберите сотрудника для редактирования.", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            EmployeeEditWindow editWindow = new EmployeeEditWindow(selectedEmployee);
+            EmployeeEditWindow editWindow = new EmployeeEditWindow(selectedEmployee, _userRole);
             if (editWindow.ShowDialog() == true)
             {
                 LoadEmployees();
