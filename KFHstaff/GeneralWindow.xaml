@@ -121,7 +121,7 @@
                         <Button Content="Управление сотрудниками"
                                 Width="200" Height="40"
                                 Margin="10"
-                                Background="#4CAF50" Foreground="White"
+                                Background="#2196F3" Foreground="White"
                                 FontSize="16"
                                 BorderThickness="0"
                                 Click="BtnManageEmployees_Click">
@@ -167,7 +167,7 @@
                         <Button Content="Оформить больничный"
                                 Width="200" Height="40"
                                 Margin="10"
-                                Background="#8E24AA" Foreground="White"
+                                Background="#2196F3" Foreground="White"
                                 FontSize="16"
                                 BorderThickness="0"
                                 Click="BtnSickLeave_Click">
@@ -189,7 +189,7 @@
                         <Button Content="Оформить отпуск"
                                 Width="200" Height="40"
                                 Margin="10"
-                                Background="#FBC02D" Foreground="Black"
+                                Background="#2196F3" Foreground="White"
                                 FontSize="16"
                                 BorderThickness="0"
                                 Click="BtnVacation_Click">
@@ -213,7 +213,7 @@
                         <Button Content="Принять на работу"
                                 Width="200" Height="40"
                                 Margin="10"
-                                Background="#388E3C" Foreground="White"
+                                Background="Green" Foreground="White"
                                 FontSize="16"
                                 BorderThickness="0"
                                 Click="BtnHire_Click">
@@ -235,7 +235,7 @@
                         <Button Content="Уволить сотрудника"
                                 Width="200" Height="40"
                                 Margin="10"
-                                Background="#D32F2F" Foreground="White"
+                                Background="Red" Foreground="White"
                                 FontSize="16"
                                 BorderThickness="0"
                                 Click="BtnDismiss_Click">
@@ -257,9 +257,9 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
                         <Button Content="История"
-                                Width="410" Height="40"
+                                Width="350" Height="40"
                                 Margin="10"
-                                Background="#607D8B" Foreground="White"
+                                Background="Black" Foreground="White"
                                 FontSize="16"
                                 BorderThickness="0"
                                 Click="BtnHistory_Click">
