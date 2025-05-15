@@ -10,6 +10,7 @@
     <!-- Ресурсы окна -->
     <Window.Resources>
         <local:RoleToVisibilityConverter x:Key="RoleToVisibilityConverter"/>
+        <local:HrRoleToVisibilityConverter x:Key="HrRoleToVisibilityConverter"/>
     </Window.Resources>
     <Grid Background="#F5F5F5">
         <!-- Заголовок -->
@@ -53,7 +54,7 @@
                 <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Right"
                             Margin="0,0,0,10"
-                            Visibility="{Binding UserRole, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource RoleToVisibilityConverter}, FallbackValue=Collapsed}">
+                            Visibility="{Binding UserRole, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource HrRoleToVisibilityConverter}, FallbackValue=Collapsed}">
                     <!-- Кнопка создания сотрудника -->
                     <Button x:Name="BtnCreate"
                             Content="Создать"

@@ -6,10 +6,10 @@ using System.Windows;
 
 namespace KFHstaff
 {
-    public partial class SickLeaveWindow : Window
+    public partial class SicklistWindow : Window
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["KFHstaffDBConnection"].ConnectionString;
-        public SickLeaveWindow()
+        public SicklistWindow()
         {
             InitializeComponent();
             LoadEmployees();
@@ -60,13 +60,13 @@ namespace KFHstaff
                 MessageBox.Show("Дата окончания не может быть раньше даты начала!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            // Сохраняем больничный (пример: в таблицу SickLeaves)
+            // Сохраняем больничный в таблицу Sicklists
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
                 {
                     connection.Open();
-                    string query = "INSERT INTO dbo.SickLeaves (EmployeeID, StartDate, EndDate, Reason) VALUES (@EmployeeID, @StartDate, @EndDate, @Reason)";
+                    string query = "INSERT INTO dbo.Sicklists (ID_Сотрудника, Дата_Начала, Дата_Окончания, Причина) VALUES (@EmployeeID, @StartDate, @EndDate, @Reason)";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@EmployeeID", ((Employee)CmbEmployee.SelectedItem).ID_Сотрудника);

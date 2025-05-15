@@ -36,22 +36,15 @@
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <!-- Заголовок -->
+
             <RowDefinition Height="Auto"/>
-            <!-- Общая статистика -->
             <RowDefinition Height="Auto"/>
-            <!-- Распределение по полу -->
             <RowDefinition Height="Auto"/>
-            <!-- Распределение по ролям -->
             <RowDefinition Height="Auto"/>
-            <!-- Выбор сотрудника -->
             <RowDefinition Height="*"/>
-            <!-- Пространство -->
             <RowDefinition Height="Auto"/>
-            <!-- Кнопки -->
         </Grid.RowDefinitions>
 
-        <!-- Заголовок -->
         <TextBlock Grid.Row="0" 
                    Text="Отчёты по сотрудникам" 
                    FontSize="20" 
@@ -126,6 +119,7 @@
             <Button x:Name="BtnBack" 
                     Content="Назад" 
                     Width="100" 
+                    Height="30"
                     Style="{StaticResource ModernButtonStyle}" 
                     Click="BtnBack_Click"/>
         </StackPanel>

@@ -75,25 +75,29 @@ namespace KFHstaff
         // Обработчик кнопки "Оформить больничный"
         private void BtnSickLeave_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Окно оформления больничного пока не реализовано.", "Информация");
+            SicklistWindow sicklistWindow = new SicklistWindow();
+            sicklistWindow.ShowDialog();
         }
 
         // Обработчик кнопки "История"
         private void BtnHistory_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Окно истории пока не реализовано.", "Информация");
+            HistoryWindow historyWindow = new HistoryWindow();
+            historyWindow.ShowDialog();
         }
 
         // Обработчик кнопки "Принять на работу"
         private void BtnHire_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Окно приёма на работу пока не реализовано.", "Информация");
+            HireWindow hireWindow = new HireWindow();
+            hireWindow.ShowDialog();
         }
 
         // Обработчик кнопки "Уволить сотрудника"
         private void BtnDismiss_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Окно увольнения пока не реализовано.", "Информация");
+            DismissWindow dismissWindow = new DismissWindow();
+            dismissWindow.ShowDialog();
         }
     }
 }
